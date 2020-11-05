@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="'viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="agrostyle.css">
+    <link rel="stylesheet" 
+          href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+  	</script>
+   	<script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+    </script> 
+    <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+    </script>
+    <style>
+body {
+  background-image: url('background_image.jpeg'); background-size: 100% ;
+}
+    </style>
+    <title>Agro_Stats</title>
+
+    <script>
+      var temp=0,n;
+      var form1=document.getElementById("form1");
+
+      function formvalid(){
+        var name=document.forms["Form 1"]["name"];
+        var email=document.forms["Form 1"]["email"];
+        var pass1=document.forms["Form 1"]["pass"];
+        var pass2=document.forms["Form 1"]["pass1"];
+        var next1=document.getElementById("Next1");
+
+        if (name.value==""){
+          window.alert("Please enter your Name");
+          return false;
+        }
+        else{
+          return temp+=1;
+        }
+
+        if (email.value==""){
+          window.alert("Please enter your Email-Id");
+          return false;
+        }
+        else{
+          return temp+=1;
+        }
+
+        if (pass1.value==""){
+          window.alert("Please enter your Password");
+          return false;
+        }
+        else{
+          return temp+=1;
+        }
+
+        if (pass2.value==""){
+          window.alert("Please enter your Password to confirm");
+          return false;
+        }
+        else{
+          return temp+=1;
+        }
+
+        if (temp==4){
+          n=pass1.localeCompare(pass2);
+          if (n==0){
+            var next1=document.forms["Form 1"]["Next"];
+            next1.onclick =function(){
+              window.location.replace("index.html");
+            }
+          }
+          else{
+            window.alert("Password Mismatch");
+          }
+        }
+        else{
+          window.alert("Please fill all details");
+        }
+        console.log("hii");
+      }
+    </script>
+</head>
+<body>
+	<header>
+ 			<img src="pictlogo.png" style="width: 100px;height: 100px;background: transparent; position: relative; clear: left; float: right;">
+ 			<h1>AGROSTATS</h1>
+ 			<div class="sections">
+ 				<a target="_self" href="register.html">
+ 					<span>Sign Up</span>   
+ 				</a>
+ 				<a target="_self" href="index.html" >
+ 					<span>Sign in</span>   
+ 				</a>
+ 				<a target="_self" href="contact.html" >
+ 					<span>Contact</span>   
+ 				</a>
+ 			</div>
+ 	</header>
+
+  <div class="signin">
+    <form id="form1" name="Form 1" action="/action_page.php" onsubmit="formvalid()">
+      <label for="Name">Username</label><br>
+        <input type="text" name="name" placeholder="Name" size="65"><br>
+        <label id="email">Email-Id</label><br>
+        <input type="email" name="email" placeholder="Email-Id" size="65"><br>
+        <label id="Password">Password</label><br>
+        <input type="Password" name="pass" placeholder="Password" size="65"><br>
+        <label id="Password">Confirm Password</label><br>
+        <input type="Password" name="pass1" placeholder="Password1" size="65"><br>
+        <div class="btn-box">
+          <button type="submit" id="Next1" name="Next" >REGISTER</button>
+        </div>
+    </form>
+
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="'viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="agrostyle.css">
+    <link rel="stylesheet" 
+          href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+  	</script>
+   	<script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+    </script> 
+    <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+    </script>
+    <style>
+body {
+  background-image: url('background_image.jpeg'); background-size: 100% ;
+}
+    </style>
+    <title>Agro_Stats</title>
+    <script>
+      var locate={
+        "Gadchiroli":{
+          "Summer":["Soyabean", "Wheat", "Cotton"],
+          "Winter":["Wheat","Linseed","Maize"],
+        },
+        "Nashik":{
+          "Summer":["Sugarcane","Wheat","Sorghum"],
+          "Winter":["Maize","Groundnut","Pomegranate"],
+        },
+        "Ratnagiri":{
+          "Summer":["Rice","Groundnut","Black Gram"],
+          "Winter":["Cashew","Coconut","Rice"]
+        }
+      }
+      window.onload=function(){
+        var location1=document.getElementById("location");
+        var season1=document.getElementById("season");
+        var crop1=document.getElementById("crops");
+        for (var x in locate){
+          location1.options[location1.options.length]=new Option(x,x);
+        }
+        location1.onchange=function(){
+          for (var y in locate[this.value]){
+            season1.options[season1.options.length]=new Option(y,y);
+          }
+        }
+        season1.onchange=function(){
+          var z=locate[location1.value][this.value];
+          for (var i=0; i<z.length; i++){
+            crop1.options[crop1.options.length]=new Option(z[i],z[i]);
+          }
+        }
+
+      }
+      //var result;
+
+      
+      function formvalid(){
+        var submitbtn=document.forms["Form 2"]["Next2"];
+        submitbtn.onclick =function(){
+        window.alert("Your result is: Wheat");
+    }      
+        
+      }
+    </script>
+    </head>
+<body>
+  <header>
+      <img src="pictlogo.png" style="width: 100px;height: 100px;background: transparent; position: relative; clear: left; float: right;">
+      <h1>AGROSTATS</h1>
+      <div class="sections">
+        <a target="_self" href="register.html">
+          <span>Sign Up</span>   
+        </a>
+        <a target="_self" href="index.html" >
+          <span>Sign in</span>   
+        </a>
+        <a target="_self" href="contact.html" >
+          <span>Contact</span>   
+        </a>
+      </div>
+    </header>
+      <div class="signin" > 
+        <form id="form2" name="Form 2" action="/action_page.php" onsubmit="formvalid()">
+          <h1>Crop Information </h1>
+          Location
+          <select name="location" id="location">
+            <option value="" selected="selected">Select Location</option>
+          </select><br>
+          Season
+          <select name="season" id="season">
+            <option value="" selected="selected">Select Season</option>
+          </select><br>
+          Crop
+          <select name="crops" id="crops">
+            <option value="" selected="selected">Select Crop</option>
+          </select><br>
+
+          <button type="submit" id="Next2" name="Next">Submit</button><input type="submit" name="Next">
+        </form>
+      </div>
+  </header>
+</body>
+</html>
